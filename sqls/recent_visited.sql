@@ -1,0 +1,1 @@
+select x.sku_id,product_id,sku_name,brand_name,cate3_name from (select sku_id,count(1) as v_count from gdm_log_w_20170224 where page_type=4 grousku_id order by v_count desc  limit 100)x inner join cp_sku on x.sku_id=cp_sku.sku_id;
