@@ -1,5 +1,6 @@
 
 import generate_nd
+import utils
 
 from pylab import *
 import matplotlib.pyplot as plt
@@ -16,18 +17,7 @@ def plot_sorted_gauss():
 
     show()
 
-def compute_frequency(l):
-    length = len(l)
-    d = {}
-    for i in l:
-        if i in d:
-            d[i] +=1
-        else:
-            d[i]  = 1
-    r_d = {}
-    for k,v in d.iteritems():
-        r_d[k] = float(v)/length
-    return r_d
+
 
 def plot_gauss():
     l  = generate_nd.raw_gauss_numbers(0,1,1000,1)
@@ -38,7 +28,7 @@ def plot_gauss():
 
 
 
-    d = compute_frequency(l_new)
+    d = utils.compute_frequency(l_new)
     #x = np.linspace(-2, 2, len(d.keys()), endpoint=True)
     plt.scatter(d.keys(), d.values(), alpha=0.5, cmap = plt.cm.hsv)
     #plot(d.values())
@@ -84,16 +74,7 @@ def plot_raw_gauss():
     show()
 
 
-def test_c_frequency():
-    l = []
-    for i in range(20):
-        l.append(random.randint(1,10))
 
-    l.sort()
-    print l
-    d = compute_frequency(l)
-    for k,v in d.iteritems():
-        print k ,v
 
 if __name__ == "__main__":
     #plot_sorted_gauss()
@@ -101,4 +82,3 @@ if __name__ == "__main__":
     #plot_nd_gauss()
     #plot_his()
     plot_gauss()
-    #test_c_frequency()
